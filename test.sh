@@ -7,10 +7,11 @@ insmod emlog.ko
 cat /proc/devices | grep emlog
 ls -la -tr /sys/class/emlog
 echo ---- testing module
-mknod testlog c 250 8
-echo "testing testlog."$RANDOM > testlog
-./nbcat testlog
-rm testlog
+mknod /tmp/testlog c 247 8
+chmod a+w /tmp/testlog
+echo "testing testlog."$RANDOM > /tmp/testlog
+./nbcat /tmp/testlog
+rm /tmp/testlog
 echo ---- removing module
 rmmod emlog
 echo ---- dmesg out
